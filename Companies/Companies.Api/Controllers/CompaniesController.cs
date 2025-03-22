@@ -1,7 +1,3 @@
-using Companies.Core.Interfaces;
-using Companies.Core.Model;
-using Microsoft.AspNetCore.Mvc;
-
 namespace Companies.Api.Controllers;
 
 [ApiController]
