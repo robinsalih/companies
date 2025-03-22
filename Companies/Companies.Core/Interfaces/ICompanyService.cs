@@ -1,6 +1,6 @@
 ﻿namespace Companies.Core.Interfaces;
 
-public interface ICompanyRepository
+public interface ICompanyService
 {
     Task<List<Company>> GetAll();
 }

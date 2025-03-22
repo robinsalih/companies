@@ -2,12 +2,12 @@ namespace Companies.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class CompaniesController(ICompanyRepository repository) : ControllerBase
+public class CompaniesController(ICompanyService companyService) : ControllerBase
 {
 
     [HttpGet(Name = "GetCompanies")]
     public Task<List<Company>> GetCompanies()
     {
-        return repository.GetAll();
+        return companyService.GetAll();
     }
 }

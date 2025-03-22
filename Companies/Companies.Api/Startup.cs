@@ -1,5 +1,3 @@
-using ILogger = Serilog.ILogger;
-
 namespace Companies.Api;
 
 public class Startup
@@ -18,7 +16,7 @@ public class Startup
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
-        //services.AddCore();
+        services.AddCore();
         services.AddInfrastructure(companiesConfiguration);
         services.AddSingleton(logger);
         services.AddSingleton<IDatabaseConfiguration>(companiesConfiguration);
