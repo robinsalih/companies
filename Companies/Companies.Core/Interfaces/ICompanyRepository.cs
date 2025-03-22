@@ -6,4 +6,5 @@ public interface ICompanyRepository
     Task Save(Company company);
     Task<Company?> GetById(Guid id);
     Task<Company?> GetByIsin(string isin);
+    Task Update(Company company);
 }

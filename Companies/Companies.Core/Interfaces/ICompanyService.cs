@@ -6,4 +6,5 @@ public interface ICompanyService
     Task<Result> SaveCompany(Company company);
     Task<Company?> GetById(Guid id);
     Task<Company?> GetByIsin(string isin);
+    Task<Result> UpdateCompany(Company company);
 }

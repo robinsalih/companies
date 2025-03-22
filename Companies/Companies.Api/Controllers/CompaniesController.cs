@@ -8,7 +8,7 @@ public class CompaniesController(ICompanyService companyService) : ControllerBas
     public Task<List<Company>> GetCompanies() => companyService.GetAll();
 
     [HttpPost(Name="company")]
-    public async Task<ActionResult> New(NewCompanyRequest request)
+    public async Task<ActionResult> New(CompanyRequest request)
     {
         var company = new Company
         {
@@ -44,5 +44,27 @@ public class CompaniesController(ICompanyService companyService) : ControllerBas
             return NotFound();
 
         return Ok(result);
+    }
+
+    [HttpPut("id:Guid")]
+    public async Task<ActionResult> Update(Guid id, [FromBody] CompanyRequest request)
+    {
+        if (await companyService.GetById(id) == null)
+            return NotFound();
+
+        var company = new Company
+        {
+            Id = id,
+            Name = request.Name,
+            Exchange = request.Exchange,
+            Ticker = request.Ticker,
+            Isin = request.Isin,
+        };
+
+        var result = await companyService.UpdateCompany(company);
+
+        return result.Success
+            ? Ok(company.Id)
+            : BadRequest(result.ErrorMessage);
     }
 }

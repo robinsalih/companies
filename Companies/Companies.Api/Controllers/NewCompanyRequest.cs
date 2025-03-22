@@ -1,6 +1,6 @@
 namespace Companies.Api.Controllers;
 
-public class NewCompanyRequest
+public class CompanyRequest
 {
     public required string Name { get; set; }
     public required string Exchange { get; set; }

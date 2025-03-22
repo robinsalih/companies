@@ -11,4 +11,17 @@ public class CompanyRepository(CompanyContext context) : ICompanyRepository
         return context.SaveChangesAsync();
     }
 
+    public async Task Update(Company company)
+    {
+        var oldRecord = await context.Companies.SingleAsync(c => c.Id == company.Id);
+        
+        oldRecord.Name = company.Name;
+        oldRecord.Exchange = company.Exchange;
+        oldRecord.Ticker = company.Ticker;
+        oldRecord.Isin = company.Isin;
+        oldRecord.Website = company.Website;
+        
+        await context.SaveChangesAsync();
+    }
+
 }

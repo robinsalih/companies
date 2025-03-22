@@ -10,10 +10,17 @@ public class CompanyService(ICompanyRepository repository, ICompanyValidationSer
             await repository.Save(company);
 
         return validationResult;
-
     }
 
     public Task<Company?> GetById(Guid id) => repository.GetById(id);
 
     public Task<Company?> GetByIsin(string isin) => repository.GetByIsin(isin);
+    public async Task<Result> UpdateCompany(Company company)
+    {
+        var validationResult = await validationService.ValidateOnUpdate(company);
+        if (validationResult.Success)
+            await repository.Update(company);
+
+        return validationResult;
+    }
 }

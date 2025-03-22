@@ -3,4 +3,5 @@
 public interface ICompanyValidationService
 {
     Task<Result> ValidateOnSave(Company company);
+    Task<Result> ValidateOnUpdate(Company company);
 }
