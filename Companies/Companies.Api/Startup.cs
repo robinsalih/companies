@@ -21,6 +21,7 @@ public class Startup
         //services.AddCore();
         services.AddInfrastructure(companiesConfiguration);
         services.AddSingleton(logger);
+        services.AddSingleton<IDatabaseConfiguration>(companiesConfiguration);
     }
 
     private static ILogger CreateSerilogLogger()

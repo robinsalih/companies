@@ -5,3 +5,4 @@ global using Companies.Core.Model;
 global using Companies.Infrastructure.Persistence;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.DependencyInjection;
+global using Serilog;

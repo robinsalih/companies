@@ -2,5 +2,6 @@
 
 public interface IDatabaseConfiguration
 {
-    string ConnectionString { get; }
+    string DatabaseConnectionString { get; }
+    bool MigrateDatabaseOnStartup { get; }
 }
