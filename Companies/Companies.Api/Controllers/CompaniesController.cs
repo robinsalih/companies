@@ -4,10 +4,25 @@ namespace Companies.Api.Controllers;
 [Route("[controller]")]
 public class CompaniesController(ICompanyService companyService) : ControllerBase
 {
+    [HttpGet()]
+    public Task<List<Company>> GetCompanies() => companyService.GetAll();
 
-    [HttpGet(Name = "GetCompanies")]
-    public Task<List<Company>> GetCompanies()
+    [HttpPost]
+    public async Task<IActionResult> New(NewCompanyRequest request)
     {
-        return companyService.GetAll();
+        var company = new Company
+        {
+            Id = Guid.NewGuid(),
+            Name = request.Name,
+            Exchange = request.Exchange,
+            Ticker = request.Ticker,
+            Isin = request.Isin,
+        };
+
+        var result = await companyService.SaveCompany(company);
+
+        return result.Success
+            ? Ok(company.Id)
+            : BadRequest(result.ErrorMessage);
     }
 }
