@@ -4,11 +4,11 @@ namespace Companies.Api.Controllers;
 [Route("[controller]")]
 public class CompaniesController(ICompanyService companyService) : ControllerBase
 {
-    [HttpGet()]
+    [HttpGet]
     public Task<List<Company>> GetCompanies() => companyService.GetAll();
 
-    [HttpPost]
-    public async Task<IActionResult> New(NewCompanyRequest request)
+    [HttpPost(Name="company")]
+    public async Task<ActionResult> New(NewCompanyRequest request)
     {
         var company = new Company
         {
@@ -24,5 +24,25 @@ public class CompaniesController(ICompanyService companyService) : ControllerBas
         return result.Success
             ? Ok(company.Id)
             : BadRequest(result.ErrorMessage);
+    }
+
+    [HttpGet("{id:Guid}")]
+    public async Task<ActionResult<Company>> GetById(Guid id)
+    {
+        var result = await companyService.GetById(id);
+        if (result == null)
+            return NotFound();
+
+        return Ok(result);
+    }
+
+    [HttpGet("{isin}")]
+    public async Task<ActionResult<Company>> GetByIsin(string isin)
+    {
+        var result = await companyService.GetByIsin(isin);
+        if (result == null)
+            return NotFound();
+
+        return Ok(result);
     }
 }

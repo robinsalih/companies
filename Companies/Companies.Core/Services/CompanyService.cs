@@ -12,4 +12,8 @@ public class CompanyService(ICompanyRepository repository, ICompanyValidationSer
         return validationResult;
 
     }
+
+    public Task<Company?> GetById(Guid id) => repository.GetById(id);
+
+    public Task<Company?> GetByIsin(string isin) => repository.GetByIsin(isin);
 }
