@@ -3,7 +3,7 @@
 public class CompanyServiceTests
 {
     private readonly Mock<ICompanyRepository> _repository = new();
-    private readonly Mock<ICompanyValidationService> _validationService = new();
+    private readonly Mock<IValidationService<Company>> _validationService = new();
     private readonly CompanyService _service;
 
     public CompanyServiceTests()

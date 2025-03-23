@@ -1,6 +1,6 @@
 ﻿namespace Companies.Core.Services;
 
-public class CompanyService(ICompanyRepository repository, ICompanyValidationService validationService) : ICompanyService
+public class CompanyService(ICompanyRepository repository, IValidationService<Company> validationService) : ICompanyService
 {
     public Task<List<Company>> GetAll() => repository.GetAll();
     public async Task<Result> SaveCompany(Company company)

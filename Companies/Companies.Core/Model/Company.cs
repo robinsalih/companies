@@ -13,4 +13,5 @@ public class Company
     public required string Isin { get; set; }
     public string? Website { get; set; }
 
+    public override string ToString() => $"Name = '{Name}', Id = {Id}";
 }

@@ -1,6 +1,6 @@
 ﻿namespace Companies.Core.Validators;
 
-public class CompanyIsinValidValidator : ICompanyValidator
+public class CompanyIsinValidValidator : IValidator<Company>
 {
     public Task<Result> ValidateOnSave(Company company) => Validate(company);
     public Task<Result> ValidateOnUpdate(Company company) => Validate(company);

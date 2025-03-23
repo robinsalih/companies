@@ -1,6 +1,6 @@
 ﻿namespace Companies.Core.Validators;
 
-public class CompanyIsinUniqueValidator(ICompanyRepository repository) : ICompanyValidator
+public class CompanyIsinUniqueValidator(ICompanyRepository repository) : IValidator<Company>
 {
     public async Task<Result> ValidateOnSave(Company company)
     {

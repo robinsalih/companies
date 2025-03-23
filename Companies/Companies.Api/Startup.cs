@@ -14,12 +14,13 @@ public class Startup
         var companiesConfiguration = new CompaniesConfiguration(configuration);
 
         services.AddControllers();
-        services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen();
-        services.AddCore();
-        services.AddInfrastructure(companiesConfiguration);
-        services.AddSingleton(logger);
-        services.AddSingleton<IDatabaseConfiguration>(companiesConfiguration);
+
+        services.AddEndpointsApiExplorer()
+                .AddSwaggerGen()
+                .AddCore()
+                .AddInfrastructure(companiesConfiguration)
+                .AddSingleton(logger)
+                .AddSingleton<IDatabaseConfiguration>(companiesConfiguration);
     }
 
     private static ILogger CreateSerilogLogger()
