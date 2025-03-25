@@ -11,6 +11,6 @@ public class MigrationService(CompanyContext context, IDatabaseConfiguration dat
             return context.Database.MigrateAsync();
         }
 
-        return Task.CompletedTask;
+        return Task.CompletedTask;      
     }
 }

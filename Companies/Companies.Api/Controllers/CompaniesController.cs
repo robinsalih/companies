@@ -17,6 +17,7 @@ public class CompaniesController(ICompanyService companyService) : ControllerBas
             Exchange = request.Exchange,
             Ticker = request.Ticker,
             Isin = request.Isin,
+            Website = request.Website,
         };
 
         var result = await companyService.SaveCompany(company);
@@ -59,6 +60,7 @@ public class CompaniesController(ICompanyService companyService) : ControllerBas
             Exchange = request.Exchange,
             Ticker = request.Ticker,
             Isin = request.Isin,
+            Website = request.Website,
         };
 
         var result = await companyService.UpdateCompany(company);

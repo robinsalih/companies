@@ -1,15 +1,10 @@
 namespace Companies.Api;
 
-public class Startup
+public class Startup(IConfiguration configuration)
 {
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-        var configuration = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json")
-            .AddEnvironmentVariables()
-            .Build();
-
         var logger = CreateSerilogLogger();
         var companiesConfiguration = new CompaniesConfiguration(configuration);
 
